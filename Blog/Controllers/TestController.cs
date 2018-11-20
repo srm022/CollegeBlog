@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers
 {
-    public class HomeController : Controller
+    public class TestController : Controller
     {
-        public IActionResult Index()
+        public IActionResult NewView()
         {
             return View();
         }
