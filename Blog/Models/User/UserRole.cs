@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Blog.Models
+namespace Blog.Models.User
 {
     [Table("UserRole")]
     public class UserRole
@@ -15,7 +15,7 @@ namespace Blog.Models
         [Required, ForeignKey(nameof(Role))]
         public int RoleId { get; set; }
 
-        public virtual Role Role { get; set; }
+        public virtual RoleModel Role { get; set; }
         public virtual RegisterModel RegisterModel { get; set; }
     }
 }

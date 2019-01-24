@@ -1,0 +1,28 @@
+﻿@page
+@using Microsoft.AspNet.Identity
+@model Blog.Pages.Article.CreateArticleModel
+
+@{
+    ViewData["Title"] = "Create an article";
+    Layout = "_Layout";
+}
+
+<div class="article-section">
+    <div class="article">
+        <form method="POST">
+            <div class="center-section">
+                <h2><b>Create an article</b></h2>
+                <br />
+                <label>Title:</label><br />
+                @Html.TextBoxFor(model => model.Model.Title)<br /><br />
+                <label>Article:</label><br />
+                @Html.TextAreaFor(model => model.Model.Content,
+                    new { @cols = "100", @rows = "8", @style="width:100%; resize: none;"})
+                <br />
+                <br />
+                <input type="submit" class="btn btn-default" value="Create" />
+                <span style="font-size: 11px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="goBack" href="@Url.Page("/Index")">Cancel</a></span>
+            </div>
+        </form>
+    </div>
+</div>

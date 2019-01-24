@@ -22,10 +22,8 @@ namespace Blog.Pages.User
         [BindProperty]
         public Models.RegisterModel Model { get; set; }
         
-        public async Task<IActionResult> OnPost(string returnUrl = null)
+        public async Task<IActionResult> OnPost()
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
-
             if (ModelState.IsValid)
             {
                 await _service.Register(Model);

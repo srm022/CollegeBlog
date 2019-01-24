@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNetCore.Mvc.RazorPages
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,11 +18,12 @@
             <span class="loginArea">
                 @if (!User.Identity.IsAuthenticated)
                 {
-                    <a href="@Url.Page("User/Index")">Sign in</a>
+                    <a href="@Url.Page("/User/Index")">Sign in</a>
                 }
                 else
                 {
-                    <span>@User.Identity.Name (<a href="@Url.Page("User/Logout")">Log out</a>)</span>
+                    <a href="@Url.Page("/Article/Create")">Create an article</a><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>@User.Identity.GetUserName() (<a href="@Url.Page("/User/Logout")">Log out</a>)</span>
                 }
             </span>
             <div class="banner-text">
@@ -28,8 +31,7 @@
             </div>
             <span class="navigationMenu">
                 <a href="/">Home</a>
-                <a href="http://www.google.pl">Contact</a>
-                <a href="http://www.google.pl">About</a>
+                <a href="@Url.Page("/About")">About</a>
             </span>
         </div>
         <div class="page-content">
@@ -39,6 +41,8 @@
     <div class="footer">
         <hr>
         Made by srm 2018
+        <br/>
+        &nbsp;
     </div>
 
 @RenderSection("scripts", required: false)

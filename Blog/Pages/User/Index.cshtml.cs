@@ -24,7 +24,7 @@ namespace Blog.Pages.User
         [BindProperty]
         public Models.LoginModel Model { get; set; }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -42,6 +42,11 @@ namespace Blog.Pages.User
         private async Task<SignInResult> AuthenticateUser()
         {
             return await _service.Authenticate(Model.Email, Model.Password);
+        }
+
+        public string TestMethod()
+        {
+            return "a";
         }
     }
 }

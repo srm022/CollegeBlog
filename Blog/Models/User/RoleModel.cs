@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Blog.Models
+namespace Blog.Models.User
 {
     [Table("Role")]
-    public class Role
+    public class RoleModel
     {
         [Key, Required]
         public int Id { get; set; }

@@ -1,11 +1,13 @@
-﻿namespace Blog.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Blog.Entities
 {
     public class UserEntity
     {
-        public int Id { get; set; }
+        [Key]
+        public int UserId { get; set; }
         public string Email { get; set; }
         public string DisplayName { get; set; }
         public string PasswordHash { get; set; }
-        //public byte[] PasswordSalt { get; set; }
     }
 }

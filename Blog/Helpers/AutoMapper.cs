@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using Blog.Dtos;
 using Blog.Entities;
+using Blog.Models;
+using Blog.Models.Article;
 
 namespace Blog.Helpers
 {
@@ -8,8 +9,11 @@ namespace Blog.Helpers
     {
         public AutoMapperProfile()
         {
-            CreateMap<UserEntity, UserDto>();
-            CreateMap<UserDto, UserEntity>();
+            CreateMap<DisplayArticleModel, ArticleEntity>();
+            CreateMap<ArticleEntity, DisplayArticleModel>();
+
+            CreateMap<CreateArticleModel, ArticleEntity>();
+            CreateMap<ArticleEntity, CreateArticleModel>();
         }
     }
 }

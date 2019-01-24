@@ -4,6 +4,8 @@ using Blog.Entities;
 using Blog.Helpers;
 using Blog.Infrastructure;
 using Blog.Models;
+using Blog.Models.User;
+using Blog.Services.Article;
 using Blog.Services.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,24 +30,15 @@ namespace Blog
         
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddIdentityCore<AppUser>(options => { });
-
             services.AddMvc();
             services.AddAutoMapper();
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
-            //optionsBuilder =>
-            //    optionsBuilder.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name)));
-
-            //services.AddIdentityCore<IdentityUser>(options => { });
-            //services.AddScoped<IUserStore<IdentityUser>, UserOnlyStore<IdentityUser, IdentityDbContext>>();
 
             services.AddIdentity<UserEntity, UserRole>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IUserStore<UserEntity>, Infrastructure.UserStore>();
-            services.AddTransient<IRoleStore<UserRole>, RoleStore>();
 
             services.AddMvc().AddRazorPagesOptions(o =>
             {
@@ -53,11 +46,11 @@ namespace Blog
                 o.Conventions.AddPageRoute("/Pages/Index", "");
             });
             
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-
             services.AddScoped<IUserService, UserService>();
-            
+            services.AddScoped<IArticleService, ArticleService>();
+            services.AddTransient<IUserStore<UserEntity>, Infrastructure.UserStore>();
+            services.AddTransient<IRoleStore<UserRole>, RoleStore>();
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
@@ -74,7 +67,7 @@ namespace Blog
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
 
-                options.LoginPath = "/Pages/Model/Index";
+                options.LoginPath = "/User/Index";
                 //options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;

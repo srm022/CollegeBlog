@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Blog.Models;
+using Blog.Models.User;
 using Microsoft.AspNetCore.Identity;
 
 namespace Blog.Infrastructure

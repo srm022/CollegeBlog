@@ -19,20 +19,20 @@ namespace Blog.Migrations
 
             modelBuilder.Entity("Blog.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArticleId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("ArticleId");
 
                     b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Blog.Models.Model", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArticleId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("DisplayName")
@@ -45,21 +45,21 @@ namespace Blog.Migrations
                         .IsRequired()
                         .HasMaxLength(1024);
 
-                    b.HasKey("Id");
+                    b.HasKey("ArticleId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Blog.Models.UserRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArticleId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("RoleId");
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("Id");
+                    b.HasKey("ArticleId");
 
                     b.HasIndex("RoleId");
 

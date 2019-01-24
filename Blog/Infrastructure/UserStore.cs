@@ -35,12 +35,12 @@ namespace Blog.Infrastructure
  
         public Task<string> GetUserIdAsync(UserEntity user, CancellationToken cancellationToken)
         {
-            return Task.FromResult(user.Id.ToString());
+            return Task.FromResult(user.UserId.ToString());
         }
  
         public Task<string> GetUserNameAsync(UserEntity user, CancellationToken cancellationToken)
         {
-            return Task.FromResult(user.Email);
+            return Task.FromResult(user.DisplayName);
         }
  
         public Task SetUserNameAsync(UserEntity user, string userName, CancellationToken cancellationToken)
