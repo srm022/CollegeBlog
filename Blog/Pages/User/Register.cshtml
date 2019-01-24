@@ -1,0 +1,40 @@
+﻿@page
+@model Blog.Pages.User.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+
+<div class="article-section">
+    <div class="article">
+        <form method="POST">
+            <div class="center-section" id="authenticate">
+                <h2><b>Register</b></h2>
+                <br />
+                <label>E-mail:</label><br />
+                @Html.TextBoxFor(model => model.Model.Email)<br />
+                <p class="validation-message">@Html.ValidationMessageFor(model => model.Model.Email)</p>
+                <br />
+                <br />
+                <label>Display name:</label><br />
+                @Html.TextBoxFor(model => model.Model.DisplayName)<br/>
+                <br />
+                <br />
+                <label>Password:</label><br />
+                @Html.PasswordFor(model => model.Model.Password)<br />
+                <p class="validation-message">@Html.ValidationMessageFor(model => model.Model.Password)</p>
+                <br />
+                <br />
+                <label>Confirm password:</label><br />
+                @Html.PasswordFor(model => model.Model.ConfirmPassword)<br />
+                <p class="validation-message">@Html.ValidationMessageFor(model => model.Model.ConfirmPassword)</p>
+                <br />
+                <br />
+                <input type="submit" class="btn btn-default" value="Register!" />
+                <span style="font-size: 11px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="goBack" href="@Url.Page("Index")">Login instead</a></span>
+            </div>
+        </form>
+    </div>
+</div>

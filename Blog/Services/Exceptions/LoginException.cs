@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace Blog.Services.Exceptions
+{
+    public class LoginException : Exception
+    {
+        public LoginException(string message) : base(message)
+        {
+
+        }
+    }
+}
