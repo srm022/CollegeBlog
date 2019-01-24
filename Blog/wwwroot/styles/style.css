@@ -16,6 +16,12 @@ a {
     text-decoration: none;
 }
 
+.goBack {
+    color: black;
+    transition: .25s;
+    text-decoration: underline;
+}
+
 a:hover {
     color: rgb(122, 122, 122);
     text-decoration: none;
@@ -73,11 +79,24 @@ a:hover {
     color: white;
 }
 
+.loginArea {
+    text-align: right;
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    top: 10%;
+    color: white;
+}
+
+.validation-message {
+    color: red;
+    font-size: 10px;
+}
+
 .article-section {
     display: grid;
     grid-gap: 1em;
     font-size: 20px;
-    color: red;
     grid-row-start: 2;
     grid-column-start: 2;
 }
@@ -85,7 +104,10 @@ a:hover {
 .article {
     display: grid;
     grid-template-rows: 1fr 1fr minmax(1fr, 2fr);
-    background-color: white;
+    background-color: #f2edeb;
+    border-radius: 11px;
+    border: 2px solid #d2cbc7;
+    color: #464342;
 }
 
 .article-header {
@@ -93,7 +115,7 @@ a:hover {
     grid-template-columns: 1fr 5fr;
     grid-gap: 1em 1em;
     margin: 5px;
-    color: black;
+    color: #5d5a58;;
 }
 
 .article-header .date {
@@ -109,12 +131,17 @@ a:hover {
     position: relative;
     bottom: 0;
     left: 0;
+    border-style: solid;
+    border-color: #a39e9b;
+    border-width: 0 0 3px 0;
+    font-size: 32px;
 }
 
 .article-header .author {
     grid-column: 2/3;
     grid-row: 2/3;
-    color: rgba(0, 0, 0, 0.3);
+    color: #a39e9b;
+    margin: 0 0 10px 6px;
 }
 
 .article-image {
@@ -125,9 +152,13 @@ a:hover {
     height: 200px;
 }
 
-.article-content {
-    color: black;
+.center-section {
+    
     margin: 2em;
+}
+
+.center-section#authenticate {
+    margin-left: 3.5em;
 }
 
 .page-content .about-note {
@@ -142,15 +173,3 @@ hr {
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
-
-/************************************/
-/*
-/*  To be disabled html tag styles
-/*
-/************************************/
-/* 
-div {
-    border-style: solid;
-    border-width: 0.1px;
-    border-color: black;
-} */

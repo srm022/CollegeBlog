@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,10 +7,40 @@
     <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="~/styles/style.css" />
+    <link href="@Url.Content("~/styles/style.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("styles", false)
 </head>
 <body>
-    @RenderBody()
+    <div class="main-layout">
+        <div id="banner">
+            <span class="loginArea">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a href="@Url.Page("User/Index")">Sign in</a>
+                }
+                else
+                {
+                    <span>@User.Identity.Name (<a href="@Url.Page("User/Logout")">Log out</a>)</span>
+                }
+            </span>
+            <div class="banner-text">
+                <h1>This is my awesome blog!</h1>
+            </div>
+            <span class="navigationMenu">
+                <a href="/">Home</a>
+                <a href="http://www.google.pl">Contact</a>
+                <a href="http://www.google.pl">About</a>
+            </span>
+        </div>
+        <div class="page-content">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <hr>
+        Made by srm 2018
+    </div>
 
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
 </body>
 </html>
