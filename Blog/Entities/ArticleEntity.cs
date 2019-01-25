@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Blog.Models.Article;
 
 namespace Blog.Entities
 {
@@ -11,5 +12,6 @@ namespace Blog.Entities
         public int UserId { get; set; }
         public DateTime DatePublished { get; set; }
         public string Content { get; set; }
+        public ArticleCategory ArticleCategoryId { get; set; }
     }
 }

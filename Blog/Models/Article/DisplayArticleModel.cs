@@ -9,5 +9,6 @@ namespace Blog.Models.Article
         public string Content { get; set; }
         public DateTime DatePublished { get; set; }
         public string Author { get; set; }
+        public ArticleCategory ArticleCategoryId { get; set; }
     }
 }

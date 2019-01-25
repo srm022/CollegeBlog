@@ -5,26 +5,36 @@ using Blog.Services.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Blog.Pages
+namespace Blog.Pages.Article.Category
 {
     public class IndexModel : PageModel
     {
         public DisplayManyArticlesModel Model { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public ArticleCategory CategoryId { get; set; }
+
         private readonly IArticleService _articleService;
         private readonly IUserService _userService;
 
-        public IndexModel(IArticleService articleService, IUserService userService)
+        public IndexModel(IArticleService articleService,
+            IUserService userService)
         {
             _articleService = articleService;
             _userService = userService;
-
-            Model = new DisplayManyArticlesModel {Articles = new List<DisplayArticleModel>()};
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            var articles = _articleService.GetAllArticles();
+            Model = new DisplayManyArticlesModel{Articles = new List<DisplayArticleModel>()};
+
+            GetPublishedArticlesForCategory();
+            Page();
+        }
+
+        private void GetPublishedArticlesForCategory()
+        {
+            var articles = _articleService.GetAllArticlesForCategory(CategoryId);
 
             foreach (var article in articles)
             {
@@ -39,8 +49,6 @@ namespace Blog.Pages
                     Content = article.Content
                 });
             }
-
-            return Page();
         }
     }
 }

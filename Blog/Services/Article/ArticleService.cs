@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Entities;
 using Blog.Helpers;
-using Blog.Models;
+using Blog.Models.Article;
 
 namespace Blog.Services.Article
 {
     public interface IArticleService
     {
         List<ArticleEntity> GetAllArticles();
+        List<ArticleEntity> GetAllArticlesForCategory(ArticleCategory category);
         Task CreateArticle(CreateArticleModel model);
         string GetArticleTitleById(int id);
         Task<int> DeleteArticle(int id);
@@ -32,6 +33,13 @@ namespace Blog.Services.Article
         public List<ArticleEntity> GetAllArticles()
         {
             var articles = _db.Article.OrderByDescending(d => d.DatePublished).ToList();
+
+            return articles;
+        }
+
+        public List<ArticleEntity> GetAllArticlesForCategory(ArticleCategory category)
+        {
+            var articles = _db.Article.Where(a => a.ArticleCategoryId == category).OrderByDescending(d => d.DatePublished).ToList();
 
             return articles;
         }

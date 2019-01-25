@@ -1,10 +1,12 @@
-﻿@page
-@model Blog.Pages.IndexModel
-
+﻿@page "{categoryId}"
+@model Blog.Pages.Article.Category.IndexModel
 @{
-    ViewData["Title"] = "My blog";
-    Layout = "_Layout";
+    ViewData["Title"] = "Articles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Articles from @Model.CategoryId category</h2>
+
 <div class="inner-section">
     @{
         foreach (var article in Model.Model.Articles)
@@ -17,9 +19,6 @@
                     <div class="author-category">
                         <div id="author">
                             Written by: <b>@article.Author</b>
-                        </div>
-                        <div id="category">
-                            <a href="@Url.Page($"/Article/Category/Index", new { categoryId = article.ArticleCategoryId })" class="category-link">@article.ArticleCategoryId.ToString()</a>
                         </div>
                     </div>
                     <div class="date">

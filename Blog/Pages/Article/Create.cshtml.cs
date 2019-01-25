@@ -12,7 +12,7 @@ namespace Blog.Pages.Article
     public class CreateArticleModel : PageModel
     {
         [BindProperty]
-        public Models.CreateArticleModel Model { get; set; }
+        public Models.Article.CreateArticleModel Model { get; set; }
 
         private readonly IArticleService _articleService;
 

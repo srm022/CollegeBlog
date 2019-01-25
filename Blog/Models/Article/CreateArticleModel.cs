@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Data.OData.Atom;
 
 namespace Blog.Models.Article
 {
@@ -12,7 +13,7 @@ namespace Blog.Models.Article
         public string Content { get; set; }
 
         [Required]
-        public string CategoryId { get; set; }
+        public ArticleCategory ArticleCategoryId { get; set; }
 
         public DateTime DatePublished { get; set; }
 

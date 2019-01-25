@@ -27,6 +27,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.category-link {
+    color: #2d2b2b;
+    transition: .25s;
+}
+
 /************************************/
 /*
 /* Element-specific html tag styles
@@ -153,8 +158,9 @@ a:hover {
     grid-column: 2/3;
     grid-row: 2/3;
     color: #a39e9b;
-    margin: 0 0 10px 6px;
+    margin: -5px 6px 10px 6px;
     display: grid;
+    font-size: 10px;
 }
 
 .article-header .author-category #author {
