@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Models
+namespace Blog.Models.Article
 {
     public class CreateArticleModel
     {
@@ -10,6 +10,9 @@ namespace Blog.Models
 
         [Required]
         public string Content { get; set; }
+
+        [Required]
+        public string CategoryId { get; set; }
 
         public DateTime DatePublished { get; set; }
 

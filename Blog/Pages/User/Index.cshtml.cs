@@ -43,10 +43,5 @@ namespace Blog.Pages.User
         {
             return await _service.Authenticate(Model.Email, Model.Password);
         }
-
-        public string TestMethod()
-        {
-            return "a";
-        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Blog.Entities
 {
-    public class UserEntity
+    public class User
     {
         [Key]
         public int UserId { get; set; }

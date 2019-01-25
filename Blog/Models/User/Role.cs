@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog.Models.User
 {
     [Table("Role")]
-    public class RoleModel
+    public class Role
     {
+
         [Key, Required]
         public int Id { get; set; }
 

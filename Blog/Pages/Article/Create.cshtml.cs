@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Blog.Services.Article;
-using Blog.Services.User;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,23 +11,20 @@ namespace Blog.Pages.Article
     [Authorize]
     public class CreateArticleModel : PageModel
     {
-        private readonly IArticleService _articleService;
-        private readonly IUserService _userService;
+        [BindProperty]
+        public Models.CreateArticleModel Model { get; set; }
 
-        public CreateArticleModel(IArticleService articleService, 
-            IUserService userService)
+        private readonly IArticleService _articleService;
+
+        public CreateArticleModel(IArticleService articleService)
         {
             _articleService = articleService;
-            _userService = userService;
         }
-
+        
         public IActionResult OnGet()
         {
             return Page();
         }
-
-        [BindProperty]
-        public Models.CreateArticleModel Model { get; set; }
 
         public async Task<IActionResult> OnPost()
         {

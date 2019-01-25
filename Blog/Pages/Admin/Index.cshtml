@@ -1,0 +1,22 @@
+﻿@page
+@model Blog.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-section">
+    <div class="inner-box">
+        <div class="center-section">
+            <h2>Admin panel</h2><br/>
+            <div id="admin-panel">
+                <div style="grid-column: 1;">
+                    <a class="black-link" style="text-decoration: none;" href="@Url.Page("/Admin/Users/Index")">Users</a>
+                </div>
+                <div style="grid-column: 2;">
+                    <a class="black-link" style="text-decoration: none;" href="@Url.Page("/Admin/Articles/Index")">Articles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

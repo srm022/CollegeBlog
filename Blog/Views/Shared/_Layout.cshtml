@@ -1,5 +1,10 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Blog.Entities
+@using Blog.Infrastructure
+@using Blog.Models.User
+@using Microsoft.AspNet.Identity
 @using Microsoft.AspNetCore.Mvc.RazorPages
+@using Microsoft.Extensions.DependencyInjection
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +16,18 @@
     <link rel="stylesheet" href="~/styles/style.css" />
     <link href="@Url.Content("~/styles/style.css")" rel="stylesheet" type="text/css" />
     @RenderSection("styles", false)
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
     <div class="main-layout">
         <div id="banner">
-            <span class="loginArea">
+            <span class="banner-admin-panel">
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <a href="@Url.Page("/Admin/Index")">Admin panel</a>
+                }
+            </span>
+            <span class="login-area">
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <a href="@Url.Page("/User/Index")">Sign in</a>
@@ -35,16 +47,17 @@
             </span>
         </div>
         <div class="page-content">
+            <br/>
             @RenderBody()
         </div>
     </div>
     <div class="footer">
         <hr>
         Made by srm 2018
-        <br/>
+        <br />
         &nbsp;
     </div>
 
-@RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

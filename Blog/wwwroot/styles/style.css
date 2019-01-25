@@ -16,15 +16,15 @@ a {
     text-decoration: none;
 }
 
-.goBack {
-    color: black;
-    transition: .25s;
-    text-decoration: underline;
-}
-
 a:hover {
     color: rgb(122, 122, 122);
     text-decoration: none;
+}
+
+.black-link {
+    color: black;
+    transition: .25s;
+    text-decoration: underline;
 }
 
 /************************************/
@@ -79,10 +79,19 @@ a:hover {
     color: white;
 }
 
-.loginArea {
+.login-area {
     text-align: right;
     position: absolute;
     right: 10%;
+    bottom: 10%;
+    top: 10%;
+    color: white;
+}
+
+.banner-admin-panel {
+    text-align: left;
+    position: absolute;
+    left: 10%;
     bottom: 10%;
     top: 10%;
     color: white;
@@ -93,7 +102,7 @@ a:hover {
     font-size: 10px;
 }
 
-.article-section {
+.inner-section {
     display: grid;
     grid-gap: 1em;
     font-size: 20px;
@@ -101,7 +110,7 @@ a:hover {
     grid-column-start: 2;
 }
 
-.article {
+.inner-box {
     display: grid;
     grid-template-rows: 1fr 1fr minmax(1fr, 2fr);
     background-color: #f2edeb;
@@ -109,6 +118,7 @@ a:hover {
     border: 2px solid #d2cbc7;
     color: #464342;
 }
+
 
 .article-header {
     display: grid;
@@ -139,11 +149,22 @@ a:hover {
     font-size: 32px;
 }
 
-.article-header .author {
+.article-header .author-category {
     grid-column: 2/3;
     grid-row: 2/3;
     color: #a39e9b;
     margin: 0 0 10px 6px;
+    display: grid;
+}
+
+.article-header .author-category #author {
+    grid-column: 1;
+    text-align: left;
+}
+
+.article-header .author-category #category {
+    grid-column: 2;
+    text-align: right;
 }
 
 .article-image {
@@ -154,13 +175,36 @@ a:hover {
     height: 200px;
 }
 
-.center-section {
-    
-    margin: 2em;
+.inner-box h2 {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .center-section#authenticate {
     margin-left: 3.5em;
+}
+
+.center-section #admin-panel {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-gap: 2em;
+}
+
+.center-section {
+    margin: 2em;
+}
+
+.center-section#userList {
+    margin: 10px 2em 0 2em;
+}
+
+.center-section #admin-panel a {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .page-content .about-note {

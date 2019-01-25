@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Entities;
 using Blog.Helpers;
 using Blog.Infrastructure;
-using Blog.Models;
 using Blog.Models.User;
 using Blog.Services.Article;
 using Blog.Services.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,30 +29,34 @@ namespace Blog
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddAutoMapper();
-
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
 
-            services.AddIdentity<UserEntity, UserRole>()
-                .AddDefaultTokenProviders();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole("admin"));
+            });
 
+            services.AddAutoMapper();
+
+            services.AddIdentity<User, Role>()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().AddRazorPagesOptions(o =>
             {
                 o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
                 o.Conventions.AddPageRoute("/Pages/Index", "");
+                o.Conventions.AuthorizeFolder("/Admin", "AdminOnly");
             });
             
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IArticleService, ArticleService>();
-            services.AddTransient<IUserStore<UserEntity>, Infrastructure.UserStore>();
-            services.AddTransient<IRoleStore<UserRole>, RoleStore>();
+
+            services.AddTransient<IUserStore<User>, UserStore>();
+            services.AddTransient<IRoleStore<Role>, RoleStore>();
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Password settings.
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
@@ -68,7 +71,6 @@ namespace Blog
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
 
                 options.LoginPath = "/User/Index";
-                //options.LogoutPath = "/Logout";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });

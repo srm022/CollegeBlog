@@ -24,7 +24,7 @@ namespace Blog.Migrations
                     b.Property<int>("ArticleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Title")
                         .IsRequired();
 
                     b.HasKey("ArticleId");

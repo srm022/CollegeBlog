@@ -13,6 +13,8 @@ namespace Blog.Services.Article
     {
         List<ArticleEntity> GetAllArticles();
         Task CreateArticle(CreateArticleModel model);
+        string GetArticleTitleById(int id);
+        Task<int> DeleteArticle(int id);
     }
 
     public class ArticleService : IArticleService
@@ -30,7 +32,7 @@ namespace Blog.Services.Article
         public List<ArticleEntity> GetAllArticles()
         {
             var articles = _db.Article.OrderByDescending(d => d.DatePublished).ToList();
-            
+
             return articles;
         }
 
@@ -38,15 +40,28 @@ namespace Blog.Services.Article
         {
             var entity = _mapper.Map<ArticleEntity>(model);
 
-            AttachDateAndAuthor(entity);
+            entity.DatePublished = DateTime.Now;
 
             _db.Article.Add(entity);
             await _db.SaveChangesAsync();
         }
 
-        private void AttachDateAndAuthor(ArticleEntity entity)
+        public string GetArticleTitleById(int id)
         {
-            entity.DatePublished = DateTime.Now;
+            var user = _db.Article.SingleOrDefault(u => u.ArticleId == id);
+
+            if (user == null)
+                return "Title";
+
+            return user.Title;
+        }
+
+        public async Task<int> DeleteArticle(int id)
+        {
+            var article = _db.Article.SingleOrDefault(u => u.ArticleId == id);
+
+            _db.Article.Remove(article ?? throw new InvalidOperationException());
+            return await _db.SaveChangesAsync();
         }
     }
 }

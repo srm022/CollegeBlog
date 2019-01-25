@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog.Models.User
 {
@@ -15,7 +16,7 @@ namespace Blog.Models.User
         [Required, ForeignKey(nameof(Role))]
         public int RoleId { get; set; }
 
-        public virtual RoleModel Role { get; set; }
+        public virtual Role Role { get; set; }
         public virtual RegisterModel RegisterModel { get; set; }
     }
 }

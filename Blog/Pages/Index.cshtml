@@ -5,18 +5,22 @@
     ViewData["Title"] = "My blog";
     Layout = "_Layout";
 }
-<br />
-<div class="article-section">
+<div class="inner-section">
     @{
         foreach (var article in Model.Articles)
         {
-            <div class="article">
+            <div class="inner-box">
                 <div class="article-header">
                     <div class="title">
                         @article.Title
                     </div>
-                    <div class="author">
-                        Written by: <b>@article.Author</b>
+                    <div class="author-category">
+                        <div id="author">
+                            Written by: <b>@article.Author</b>
+                        </div>
+                        <div id="category">
+                            Category: <a>@article.Category</a>
+                        </div>
                     </div>
                     <div class="date">
                         @article.DatePublished.ToString("dd MMMM yyyy")
@@ -32,44 +36,4 @@
             <br />
         }
     }
-
-    @*<div class="article">
-                <div class="article-header">
-                    <div class="title">
-                        TITLETITLETITLE
-                    </div>
-                    <div class="author">
-                        Written by: <b>AUTHORAUTHORAUTHOR</b>
-                    </div>
-                    <div class="date">
-                        DATE
-                    </div>
-                </div>
-                <div class="article-image"> @*IMAGEIMAGEIMAGEIMAGE
-        </div>
-        <div class="center-section">
-            <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-            </p>
-        </div>
-            </div>
-            <div class="article">
-                    <div class="article-header">
-                        <div class="title">
-                            About how I made this blog come true
-                        </div>
-                        <div class="author">
-                            Written by: <b>xyz</b>
-                        </div>
-                        <div class="date">
-                            1/1/2000
-                        </div>
-                    </div>
-                    <div class="article-image"></div>
-                    <div class="center-section">
-                        <p>
-                            This has been a very bumpy road. It all started with a bowl of my favourite cereal...
-                        </p>
-                    </div>
-                </div>*@
 </div>

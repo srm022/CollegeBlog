@@ -11,8 +11,8 @@ namespace Blog.Helpers
         {
         }
         
-        public DbSet<RoleModel> Roles { get; set; }
-        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ArticleEntity> Article { get; set; }
     }

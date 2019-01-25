@@ -1,0 +1,25 @@
+﻿@page
+@using Blog.Models.User
+@model Blog.Pages.Admin.Articles.ArticlesModel
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-section">
+    <div class="inner-box" style="display: grid; font-size: 12px;">
+        <div class="center-section" id="userList" style="display: grid;">
+            <h2>Published articles</h2>
+            <br />
+            @{
+                foreach (var article in Model.Model.Articles)
+                {
+                    <p>
+                        <span style="grid-column: 1;"><a href="@Url.Page($"/Admin/Articles/Delete", new { id = article.ArticleId })" class="black-link">Delete</a></span>&nbsp;&nbsp;&nbsp;
+                        <span style="grid-column: 2;">Published: @article.DatePublished, Author: @article.Author, Title: @article.Title</span>
+                    </p>
+                }
+            }
+        </div>
+    </div>
+</div>

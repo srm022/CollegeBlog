@@ -1,0 +1,25 @@
+﻿@page
+@using Blog.Models.User
+@model Blog.Pages.Admin.Users.UsersModel
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-section">
+    <div class="inner-box" style="display: grid; font-size: 12px;">
+        <div class="center-section" id="userList" style="display: grid;">
+            <h2>Registered users</h2>
+            <br />
+            @{
+                foreach (var user in Model.Model.Users)
+                {
+                    <p>
+                        <span style="grid-column: 1;"><a href="@Url.Page($"/Admin/Users/Delete", new { id = user.Id })" class="black-link">Delete</a></span>&nbsp;&nbsp;&nbsp;
+                        <span style="grid-column: 2;">User id: @user.Id, DisplayName: @user.DisplayName</span>
+                    </p>
+                }
+            }
+        </div>
+    </div>
+</div>
