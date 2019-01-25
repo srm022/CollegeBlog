@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Blog.Models.Article;
+using Blog.Models.Article.Comment;
 
 namespace Blog.Entities
 {
@@ -13,5 +15,6 @@ namespace Blog.Entities
         public DateTime DatePublished { get; set; }
         public string Content { get; set; }
         public ArticleCategory ArticleCategoryId { get; set; }
+        public List<CommentEntity> Comments { get; set; }
     }
 }

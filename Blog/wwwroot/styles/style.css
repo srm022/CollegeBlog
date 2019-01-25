@@ -213,6 +213,16 @@ a:hover {
     text-align: center;
 }
 
+.comments-link {
+    text-align: right;
+    color: #5d5a58;
+    transition: .25s;
+}
+
+.comments-link a {
+    color:#a39e9b !important;
+}
+
 .page-content .about-note {
     grid-row-start: 2;
     grid-column-start: 2;

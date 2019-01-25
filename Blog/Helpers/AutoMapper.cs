@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Blog.Entities;
-using Blog.Models;
 using Blog.Models.Article;
+using Blog.Models.Article.Comment;
 
 namespace Blog.Helpers
 {
@@ -14,6 +14,9 @@ namespace Blog.Helpers
 
             CreateMap<CreateArticleModel, ArticleEntity>();
             CreateMap<ArticleEntity, CreateArticleModel>();
+
+            CreateMap<CreateCommentModel, CommentEntity>();
+            CreateMap<CommentEntity, CreateCommentModel>();
         }
     }
 }

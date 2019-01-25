@@ -30,6 +30,9 @@
                     <p>
                         @article.Content
                     </p>
+                    <div class="comments-link">
+                        <a href="@Url.Page($"/Article/Index", new { id = article.ArticleId })">Comments</a>
+                    </div>
                 </div>
             </div>
             <br />

@@ -36,7 +36,8 @@ namespace Blog.Pages
                     Title = article.Title,
                     ArticleId = article.ArticleId,
                     ArticleCategoryId = article.ArticleCategoryId,
-                    Content = article.Content
+                    Content = article.Content,
+                    Comments = article.Comments
                 });
             }
 

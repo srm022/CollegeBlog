@@ -6,6 +6,7 @@ using AutoMapper;
 using Blog.Entities;
 using Blog.Helpers;
 using Blog.Models.Article;
+using Blog.Models.Article.Comment;
 
 namespace Blog.Services.Article
 {
@@ -14,8 +15,11 @@ namespace Blog.Services.Article
         List<ArticleEntity> GetAllArticles();
         List<ArticleEntity> GetAllArticlesForCategory(ArticleCategory category);
         Task CreateArticle(CreateArticleModel model);
+        ArticleEntity GetArticleById(int id);
+        List<CommentEntity> GetCommentsForArticleId(int articleId);
         string GetArticleTitleById(int id);
         Task<int> DeleteArticle(int id);
+        Task CreateComment(CreateCommentModel createModel);
     }
 
     public class ArticleService : IArticleService
@@ -44,14 +48,14 @@ namespace Blog.Services.Article
             return articles;
         }
 
-        public async Task CreateArticle(CreateArticleModel model)
+        public ArticleEntity GetArticleById(int id)
         {
-            var entity = _mapper.Map<ArticleEntity>(model);
+            return _db.Article.SingleOrDefault(a => a.ArticleId == id);
+        }
 
-            entity.DatePublished = DateTime.Now;
-
-            _db.Article.Add(entity);
-            await _db.SaveChangesAsync();
+        public List<CommentEntity> GetCommentsForArticleId(int articleId)
+        {
+            return _db.Comment.Where(c => c.ArticleId == articleId).ToList();
         }
 
         public string GetArticleTitleById(int id)
@@ -70,6 +74,26 @@ namespace Blog.Services.Article
 
             _db.Article.Remove(article ?? throw new InvalidOperationException());
             return await _db.SaveChangesAsync();
+        }
+
+        public async Task CreateArticle(CreateArticleModel model)
+        {
+            var entity = _mapper.Map<ArticleEntity>(model);
+
+            entity.DatePublished = DateTime.Now;
+
+            _db.Article.Add(entity);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task CreateComment(CreateCommentModel createModel)
+        {
+            var entity = _mapper.Map<CommentEntity>(createModel);
+
+            entity.DatePublished = DateTime.Now;
+
+            _db.Comment.Add(entity);
+            await _db.SaveChangesAsync();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Blog.Models.Article.Comment;
 
 namespace Blog.Models.Article
 {
@@ -10,5 +12,6 @@ namespace Blog.Models.Article
         public DateTime DatePublished { get; set; }
         public string Author { get; set; }
         public ArticleCategory ArticleCategoryId { get; set; }
+        public List<CommentEntity> Comments { get; set; }
     }
 }

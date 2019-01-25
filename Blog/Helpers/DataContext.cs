@@ -1,5 +1,5 @@
 ﻿using Blog.Entities;
-using Blog.Models;
+using Blog.Models.Article.Comment;
 using Blog.Models.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,5 +15,6 @@ namespace Blog.Helpers
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ArticleEntity> Article { get; set; }
+        public DbSet<CommentEntity> Comment { get; set; }
     }
 }

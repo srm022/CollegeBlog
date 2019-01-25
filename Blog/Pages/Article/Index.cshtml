@@ -1,7 +1,72 @@
-﻿@page
+﻿@page "{id}"
 @model Blog.Pages.Article.ArticleModel
 
 @{
     ViewData["Title"] = "Login";
     Layout = "_Layout";
 }
+
+<div class="inner-section">
+    <div class="inner-box">
+        <div class="article-header">
+            <div class="title">
+                @Model.Model.Title
+            </div>
+            <div class="author-category">
+                <div id="author">
+                    Written by: <b>@Model.Model.Author</b>
+                </div>
+                <div id="category">
+                    <a href="@Url.Page($"/Article/Category/Index", new { categoryId = Model.Model.ArticleCategoryId })" class="category-link">@Model.Model.ArticleCategoryId.ToString()</a>
+                </div>
+            </div>
+            <div class="date">
+                @Model.Model.DatePublished.ToString("dd MMMM yyyy")
+            </div>
+        </div>
+        <div class="article-image"></div>
+        <div class="center-section">
+            <p>
+                @Model.Model.Content
+            </p>
+        </div>
+    </div>
+    <br />
+    <div class="inner-box">
+        <div class="center-section">
+            @{
+                if (Model.Model.Comments.Any())
+                {
+                    foreach (var comment in Model.Model.Comments)
+                    {
+                        <div>
+                            <b>@comment.Author</b> &nbsp;&nbsp;<small>[@comment.DatePublished.ToString("g")]:</small><br />
+                            @comment.Content
+                        </div>
+                        <br />
+                    }
+                }
+                else
+                {
+                    <span>There are no comments under this article yet.</span>
+                }
+            }
+        </div>
+    </div><br />
+
+    <div class="inner-box">
+        <form method="POST">
+            <div class="center-section">
+                <h2>Comment on this</h2>
+                <br />
+                <label>Your name:</label><br />
+                @Html.TextBoxFor(model => model.CreateModel.Author)<br /><br />
+                <label>Your comment:</label><br />
+                @Html.TextAreaFor(model => model.CreateModel.Content, new { @cols = "100", @rows = "8", @style = "width:100%; resize: none;" })
+                <br />
+                <br />
+                <input type="submit" class="btn btn-default" value="Comment" />
+            </div>
+        </form>
+    </div>
+</div>
