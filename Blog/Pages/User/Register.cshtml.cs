@@ -31,17 +31,17 @@ namespace Blog.Pages.User
         
         public async Task<IActionResult> OnPost()
         {
-            //ViewData["ReCaptchaKey"] = _configuration.GetSection("GoogleReCaptcha:key").Value;
+            ViewData["ReCaptchaKey"] = _configuration.GetSection("GoogleReCaptcha:key").Value;
 
             if (ModelState.IsValid)
             {
-                //if (!ReCaptchaPassed(
-                //    Request.Form["g-recaptcha-response"],
-                //    _configuration.GetSection("GoogleReCaptcha:secret").Value))
-                //{
-                //    ModelState.AddModelError(string.Empty, "Captcha failed.");
-                //    return Page();
-                //}
+                if (!ReCaptchaPassed(
+                    Request.Form["g-recaptcha-response"],
+                    _configuration.GetSection("GoogleReCaptcha:secret").Value))
+                {
+                    ModelState.AddModelError(string.Empty, "Captcha failed.");
+                    return Page();
+                }
 
                 await _service.Register(Model);
                 return RedirectToPage("/Index");
