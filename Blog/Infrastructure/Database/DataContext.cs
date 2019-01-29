@@ -3,7 +3,7 @@ using Blog.Models.Article.Comment;
 using Blog.Models.User;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Helpers
+namespace Blog.Infrastructure.Database
 {
     public class DataContext : DbContext
     {
@@ -12,7 +12,7 @@ namespace Blog.Helpers
         }
         
         public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<ArticleEntity> Article { get; set; }
         public DbSet<CommentEntity> Comment { get; set; }

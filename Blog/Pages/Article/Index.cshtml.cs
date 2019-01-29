@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Blog.Models.Article;
 using Blog.Models.Article.Comment;
-using Blog.Services.Article;
-using Blog.Services.User;
-using Microsoft.AspNet.Identity;
+using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

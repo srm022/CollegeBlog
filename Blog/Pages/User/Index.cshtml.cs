@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Blog.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Blog.Services.User;
 using Microsoft.AspNetCore.Mvc;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 

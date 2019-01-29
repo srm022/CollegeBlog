@@ -2,7 +2,7 @@
 using AutoMapper;
 using Blog.Models.Article;
 using Blog.Models.User;
-using Blog.Services.User;
+using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

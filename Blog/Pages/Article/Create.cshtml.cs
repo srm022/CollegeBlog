@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Blog.Services.Article;
+using Blog.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

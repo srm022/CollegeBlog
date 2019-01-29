@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Blog.Services.User;
+using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

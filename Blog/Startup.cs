@@ -2,11 +2,10 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Entities;
-using Blog.Helpers;
 using Blog.Infrastructure;
+using Blog.Infrastructure.Database;
 using Blog.Models.User;
-using Blog.Services.Article;
-using Blog.Services.User;
+using Blog.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -39,7 +38,7 @@ namespace Blog
 
             services.AddAutoMapper();
 
-            services.AddIdentity<User, Role>()
+            services.AddIdentity<UserEntity, Role>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc().AddRazorPagesOptions(o =>
@@ -52,7 +51,7 @@ namespace Blog
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IArticleService, ArticleService>();
 
-            services.AddTransient<IUserStore<User>, UserStore>();
+            services.AddTransient<IUserStore<UserEntity>, UserStore>();
             services.AddTransient<IRoleStore<Role>, RoleStore>();
 
             services.Configure<IdentityOptions>(options =>
@@ -70,7 +69,7 @@ namespace Blog
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
 
-                options.LoginPath = "/User/Index";
+                options.LoginPath = "/UserEntity/Index";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });

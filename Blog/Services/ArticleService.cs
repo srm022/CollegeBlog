@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Entities;
-using Blog.Helpers;
+using Blog.Infrastructure.Database;
 using Blog.Models.Article;
 using Blog.Models.Article.Comment;
 
-namespace Blog.Services.Article
+namespace Blog.Services
 {
     public interface IArticleService
     {

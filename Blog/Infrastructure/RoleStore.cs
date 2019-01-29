@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Blog.Helpers;
+using Blog.Infrastructure.Database;
 using Blog.Models.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Extensions.Internal;

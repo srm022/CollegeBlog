@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.Entities;
-using Blog.Helpers;
-using Blog.Models.Article;
+using Blog.Infrastructure.Database;
 using Blog.Models.User;
 using Microsoft.AspNetCore.Identity;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
-namespace Blog.Services.User
+namespace Blog.Services
 {
     public interface IUserService
     {
         Task<SignInResult> Authenticate(string email, string password);
         Task<IdentityResult> Register(Models.RegisterModel registerModel);
-        List<Entities.User> GetAllUsers();
+        List<Entities.UserEntity> GetAllUsers();
         Task Logout();
         Task<int> DeleteUser(int id);
         string GetUsernameById(int id);
@@ -23,16 +21,16 @@ namespace Blog.Services.User
 
     public class UserService : IUserService
     {
-        private readonly SignInManager<Entities.User> _signInManager;
-        private readonly UserManager<Entities.User> _userManager;
+        private readonly SignInManager<Entities.UserEntity> _signInManager;
+        private readonly UserManager<Entities.UserEntity> _userManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly DataContext _db;
 
 
         public UserService(DataContext db,
-            SignInManager<Entities.User> signInManager, 
+            SignInManager<Entities.UserEntity> signInManager, 
             RoleManager<Role> roleManager,
-            UserManager<Entities.User> userManager)
+            UserManager<Entities.UserEntity> userManager)
         {
             _db = db;
             _signInManager = signInManager;
@@ -67,23 +65,23 @@ namespace Blog.Services.User
             }
         }
         
-        public async Task<IdentityResult> AddUserToRoleAsync(Entities.User user, string roleName)
+        public async Task<IdentityResult> AddUserToRoleAsync(Entities.UserEntity userEntity, string roleName)
         {
             var result = new IdentityResult();
             
             var role = await _roleManager.FindByNameAsync(roleName);
 
             if (role != null)
-                result = await _signInManager.UserManager.AddToRoleAsync(user, roleName);
+                result = await _signInManager.UserManager.AddToRoleAsync(userEntity, roleName);
 
             return result;
         }
 
         public async Task Logout() => await _signInManager.SignOutAsync();
 
-        private Entities.User MapToEntity(Models.RegisterModel registerModelModel)
+        private Entities.UserEntity MapToEntity(Models.RegisterModel registerModelModel)
         {
-            return new Entities.User
+            return new Entities.UserEntity
             {
                 Email = registerModelModel.Email,
                 DisplayName = registerModelModel.DisplayName
@@ -100,7 +98,7 @@ namespace Blog.Services.User
             return user.DisplayName;
         }
 
-        public List<Entities.User> GetAllUsers()
+        public List<Entities.UserEntity> GetAllUsers()
         {
 
             var users = _db.Users.ToList();

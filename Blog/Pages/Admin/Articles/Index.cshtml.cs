@@ -3,8 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Blog.Entities;
 using Blog.Models.Article;
-using Blog.Services.Article;
-using Blog.Services.User;
+using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

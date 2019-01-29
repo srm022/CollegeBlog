@@ -3,7 +3,7 @@ using Blog.Entities;
 using Blog.Models.Article;
 using Blog.Models.Article.Comment;
 
-namespace Blog.Helpers
+namespace Blog.Infrastructure.Database
 {
     public class AutoMapperProfile : Profile
     {
