@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Blog.Models.Article
+namespace Blog.Models.PageContent.Article
 {
     public class DisplayManyArticlesModel
     {

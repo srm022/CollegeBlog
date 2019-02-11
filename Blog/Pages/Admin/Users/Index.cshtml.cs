@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using Blog.Models.Article;
 using Blog.Models.User;
 using Blog.Services;
 using Microsoft.AspNetCore.Mvc;

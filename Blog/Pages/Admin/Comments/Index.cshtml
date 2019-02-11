@@ -1,0 +1,25 @@
+﻿@page
+@model Blog.Pages.Admin.Comments.CommentsModel
+@{
+    ViewData["Title"] = "Published comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-section">
+    <div class="inner-box" style="display: grid; font-size: 12px;">
+        <div class="center-section" id="userList" style="display: grid;">
+            <h2>Published comments</h2>
+            <br />
+            <div style="display: grid; grid-template-columns: 5% 8% 87%">
+                @{
+                    foreach (var comment in Model.Model.Comments)
+                    {
+                        <span style="grid-column: 2;"><a href="@Url.Page($"/Admin/Comments/Delete", new { id = comment.CommentId })" class="black-link">Delete</a>&nbsp;&nbsp;&nbsp;</span>
+                        <span style="grid-column: 3;"><b>Published</b>: @comment.DatePublished.ToString("d"), <b>Author</b>: @comment.Author, <b>Article title</b>: @comment.ArticleTitle</span>
+                     }
+                }
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>

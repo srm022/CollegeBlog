@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Blog.Models.Article;
-using Blog.Models.Article.Comment;
 
 namespace Blog.Entities
 {

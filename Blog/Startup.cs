@@ -50,9 +50,12 @@ namespace Blog
             
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IArticleService, ArticleService>();
+            services.AddScoped<IContactService, ContactService>();
 
             services.AddTransient<IUserStore<UserEntity>, UserStore>();
             services.AddTransient<IRoleStore<Role>, RoleStore>();
+
+            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
 
             services.Configure<IdentityOptions>(options =>
             {

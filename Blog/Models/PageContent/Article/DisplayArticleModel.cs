@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Blog.Models.Article.Comment;
+using Blog.Entities;
+using Blog.Models.Article;
 
-namespace Blog.Models.Article
+namespace Blog.Models.PageContent.Article
 {
     public class DisplayArticleModel
     {

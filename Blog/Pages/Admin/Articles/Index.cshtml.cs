@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using Blog.Entities;
-using Blog.Models.Article;
+using Blog.Models.PageContent.Article;
 using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,15 +15,12 @@ namespace Blog.Pages.Admin.Articles
 
         private readonly IUserService _userService;
         private readonly IArticleService _articleService;
-        private readonly IMapper _mapper;
         
         public ArticlesModel(IUserService userService, 
-            IArticleService articleService, 
-            IMapper mapper)
+            IArticleService articleService)
         {
             _userService = userService;
             _articleService = articleService;
-            _mapper = mapper;
 
             Model = new DisplayManyArticlesModel {Articles = new List<DisplayArticleModel>()};
         }

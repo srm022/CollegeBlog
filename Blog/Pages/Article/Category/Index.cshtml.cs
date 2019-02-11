@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Blog.Models.Article;
+using Blog.Models.PageContent.Article;
 using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

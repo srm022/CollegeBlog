@@ -27,7 +27,7 @@ namespace Blog.Pages.User
         }
 
         [BindProperty]
-        public Models.RegisterModel Model { get; set; }
+        public Models.User.RegisterModel Model { get; set; }
         
         public async Task<IActionResult> OnPost()
         {

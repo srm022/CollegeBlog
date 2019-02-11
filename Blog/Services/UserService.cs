@@ -12,7 +12,7 @@ namespace Blog.Services
     public interface IUserService
     {
         Task<SignInResult> Authenticate(string email, string password);
-        Task<IdentityResult> Register(Models.RegisterModel registerModel);
+        Task<IdentityResult> Register(RegisterModel registerModel);
         List<Entities.UserEntity> GetAllUsers();
         Task Logout();
         Task<int> DeleteUser(int id);
@@ -44,7 +44,7 @@ namespace Blog.Services
                 password, false, lockoutOnFailure: true);
         }
 
-        public async Task<IdentityResult> Register(Models.RegisterModel registerModel)
+        public async Task<IdentityResult> Register(RegisterModel registerModel)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Blog.Services
 
         public async Task Logout() => await _signInManager.SignOutAsync();
 
-        private Entities.UserEntity MapToEntity(Models.RegisterModel registerModelModel)
+        private Entities.UserEntity MapToEntity(RegisterModel registerModelModel)
         {
             return new Entities.UserEntity
             {

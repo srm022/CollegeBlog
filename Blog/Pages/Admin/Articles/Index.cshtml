@@ -10,15 +10,17 @@
         <div class="center-section" id="userList" style="display: grid;">
             <h2>Published articles</h2>
             <br />
-            @{
-                foreach (var article in Model.Model.Articles)
-                {
-                    <p>
-                        <span style="grid-column: 1;"><a href="@Url.Page($"/Admin/Articles/Delete", new { id = article.ArticleId })" class="black-link">Delete</a></span>&nbsp;&nbsp;&nbsp;
-                        <span style="grid-column: 2;">Published: @article.DatePublished, Author: @article.Author, Title: @article.Title</span>
-                    </p>
+            <div style="display: grid; grid-template-columns: 5% 8% 87%">
+                @{
+                    foreach (var article in Model.Model.Articles)
+                    {
+                        <span style="grid-column: 1;"><a href="@Url.Page($"/Admin/Articles/Update", new { id = article.ArticleId })" class="black-link">Edit</a></span>
+                        <span style="grid-column: 2;"><a href="@Url.Page($"/Admin/Articles/Delete", new { id = article.ArticleId })" class="black-link">Delete</a>&nbsp;&nbsp;&nbsp;</span>
+                        <span style="grid-column: 3;"><b>Published</b>: @article.DatePublished.ToString("d"), <b>Author</b>: @article.Author, <b>Title</b>: @article.Title</span>
+                     }
                 }
-            }
+                <br/>
+            </div>
         </div>
     </div>
 </div>

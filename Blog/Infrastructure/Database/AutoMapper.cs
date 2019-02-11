@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Blog.Entities;
-using Blog.Models.Article;
 using Blog.Models.Article.Comment;
+using Blog.Models.PageContent.Article;
 
 namespace Blog.Infrastructure.Database
 {
@@ -14,6 +14,9 @@ namespace Blog.Infrastructure.Database
 
             CreateMap<CreateArticleModel, ArticleEntity>();
             CreateMap<ArticleEntity, CreateArticleModel>();
+
+            CreateMap<UpdateArticleModel, ArticleEntity>();
+            CreateMap<ArticleEntity, UpdateArticleModel>();
 
             CreateMap<CreateCommentModel, CommentEntity>();
             CreateMap<CommentEntity, CreateCommentModel>();

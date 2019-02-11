@@ -1,0 +1,28 @@
+﻿@page "{id}"
+@using Blog.Models.Article
+@model Blog.Pages.Admin.Articles.UpdateModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner-section">
+    <div class="inner-box">
+        <form method="POST">
+            <div class="center-section">
+                <h2>Create an article</h2>
+                <br />
+                <label>Title:</label><br />
+                @Html.TextBoxFor(model => model.UpdateArticleModel.Title)<br /><br />
+                <label>Category:</label><br />
+                @Html.DropDownListFor(model => model.UpdateArticleModel.ArticleCategoryId, Html.GetEnumSelectList<ArticleCategory>())<br /><br />
+                <label>Article:</label><br />
+                @Html.TextAreaFor(model => model.UpdateArticleModel.Content, new { @cols = "100", @rows = "8", @style = "width:100%; resize: none;" })
+                <br />
+                <br />
+                <input type="submit" class="btn btn-default" value="Save" />
+                <span style="font-size: 11px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="black-link" href="@Url.Page("/Admin/Articles/Index")">Cancel</a></span>
+            </div>
+        </form>
+    </div>
+</div>

@@ -30,12 +30,12 @@
             <span class="login-area">
                 @if (!User.Identity.IsAuthenticated)
                 {
-                    <a href="@Url.Page("/UserEntity/Index")">Sign in</a>
+                    <a href="@Url.Page("/User/Index")">Sign in</a>
                 }
                 else
                 {
                     <a href="@Url.Page("/Article/Create")">Create an article</a><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span>@User.Identity.GetUserName() (<a href="@Url.Page("/UserEntity/Logout")">Log out</a>)</span>
+                    <span>@User.Identity.GetUserName() (<a href="@Url.Page("/User/Logout")">Log out</a>)</span>
                 }
             </span>
             <div class="banner-text">
@@ -44,6 +44,7 @@
             <span class="navigationMenu">
                 <a href="/">Home</a>
                 <a href="@Url.Page("/About")">About</a>
+                <a href="@Url.Page("/Contact")">Contact</a>
             </span>
         </div>
         <div class="page-content">

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Blog.Models.User;
 
-namespace Blog.Models
+namespace Blog.Models.User
 {
     public class RegisterModel
     {

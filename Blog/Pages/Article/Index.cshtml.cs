@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Blog.Models.Article;
+using Blog.Entities;
 using Blog.Models.Article.Comment;
+using Blog.Models.PageContent.Article;
 using Blog.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

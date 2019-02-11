@@ -1,5 +1,5 @@
 ﻿@page "{id}"
-@model Blog.Pages.Admin.Articles.DeleteModel
+@model Blog.Pages.Admin.Comments.DeleteModel
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,10 +11,14 @@
             <form method="POST">
                 <h2>Delete</h2>
                 <br/>
-                <p>Are you sure you want to delete this article?
-                    <br/>
-                    <br/>Article id: <b>@Model.Id</b>
-                    <br/>Title: <b>@Model.Title</b></p>
+                <p>
+                    Are you sure you want to delete this comment?
+                    <br />
+                    <br />Comment id: <b>@Model.Id</b>
+                    <br />Author: <b>@Model.Model.Author</b>
+                    <br />Date published: <b>@Model.Model.DatePublished.ToString("g")</b>
+                    <br />Content: <b>@Model.Model.Content</b>
+                </p>
                 <br/>
                 <input type="submit" class="btn btn-default" value="Delete" />
                 <span style="font-size: 11px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="black-link" href="@Url.Page("/Admin/Comments/Index")">Cancel</a></span>
